@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Amicable numbers</title>
+        <link rel = "stylesheet" type = "text/css" href = "amicable_numbers.css">
+    </head>
+    <body>
+        <h1>Amicable Numbers?</h1>
+
+        <form name = "form" action = "amicable" method = "get">
+            <label for="num1">Enter First Number:</label><br>
+            <input type="int" id="num1" name="num1" value=""><br>
+            <label for="num2">Enter Second Number:</label><br>
+            <input type="int" id="num2" name="num2" value=""><br><br>
+        </form>
+
+        <button type="submit" onclick="amicable_numbers()">Submit</button>
+        <div id = "output"></div>
+        <script>
+            function amicable_numbers() {
+                var num1 = document.forms["form"]["num1"].value;
+                var num2 = document.forms["form"]["num2"].value;
+                var sum1 = 0;
+                var sum2 = 0;
+                const array1 = [];
+                const array2 = [];
+                /* Loop through and fill array1 */
+                for (let i = 0; i < num1; i++) {
+                    if (isAFactor(i, num1)) {
+                        array1.push(i);
+                        sum1 += i;
+                    }
+                }
+
+                for (let i = 0; i < array1.length; i++) {
+                    sum1 += array1[i];
+                }
+                
+
+                if (sum1 == num2) {
+                    for (let i = 1; i <= num2; i++) {
+                        if (isAFactor(i, num2)) {
+                            array2.push(i);
+                            sum2 += i;
+                        }
+                    }
+                    for (let i = 0; i < array2.length; i++) {
+                        sum2 += array2[i];
+                    }
+                    
+                    if (sum2 == num1) {
+                        document.getElementById("output").innerHTML = "The numbers are amicable";
+                    } else {
+                        document.getElementById("output").innerHTML = "The numbers are not amicable";
+                    }
+                } else {
+                    document.getElementById("output").innerHTML = "The numbers are not amicable";
+                }
+            };
+
+            function isAFactor(a, b) {
+                console.log(a);
+                console.log(b);
+                if (b % a == 0) {
+                    return true;
+                }
+                return false;
+            };
+        </script>
+    </body>
+</html>
