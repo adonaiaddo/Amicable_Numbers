@@ -31,21 +31,15 @@
                         sum1 += i;
                     }
                 }
-
-                for (let i = 0; i < array1.length; i++) {
-                    sum1 += array1[i];
-                }
                 
 
                 if (sum1 == num2) {
-                    for (let i = 1; i <= num2; i++) {
+                    for (let i = 1; i < num2; i++) {
                         if (isAFactor(i, num2)) {
                             array2.push(i);
+                            console.log(array2);
                             sum2 += i;
                         }
-                    }
-                    for (let i = 0; i < array2.length; i++) {
-                        sum2 += array2[i];
                     }
                     
                     if (sum2 == num1) {
@@ -59,8 +53,6 @@
             };
 
             function isAFactor(a, b) {
-                console.log(a);
-                console.log(b);
                 if (b % a == 0) {
                     return true;
                 }
